@@ -1,0 +1,20 @@
+{
+  "name": "ws_govbr",
+  "version": "1.0.0",
+  "description": "Aprendendo Web Scraping com o blog do governo federal com cheerio e axios :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AsteriGo/WS_govbr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AsteriGo/WS_govbr/issues"
+  },
+  "homepage": "https://github.com/AsteriGo/WS_govbr#readme"
+}
