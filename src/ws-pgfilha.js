@@ -11,8 +11,8 @@ const cheerio = require('cheerio')
 
 const urlfilho = "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2023/janeiro/programa-doacao-do-bem-tem-edital-lancado"
 axios.get(urlfilho).then(resp=>{
-    dhtml = resp.data
-    $ = cheerio.load(dhtml)
+    const dhtml = resp.data
+    const $ = cheerio.load(dhtml)
     const titulo = $('h1').text();
     const linkimg = $('#media>img').attr('src')
     const publicacao = $('.documentPublished>.value').text();
