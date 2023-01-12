@@ -4,36 +4,13 @@ const mysql = require('mysql2')
 
 const pool = mysql.createPool({
     connectionLimit:'20',
-    host:'localhost',
+    host:'10.13.14.2',
     port:'3306',
     user:'yonan',
     password:'121325@node',
     database:'node'
 })
 
-const salvandodados = (dt)=>{
-    pool.getConnection(function(err, connection){
-        if(err) throw err;
-        connection.query('INSERT INTO noticias set ?', dt, function(error, result, fields){
-            console.log('Deu certo')
-            connection.release()
-
-            if(error) throw error;
-        })
-    })
-}
-
-function salvardados(sdt) {
-    pool.getConnection(function(err, connection){
-        if(err) throw err;
-        connection.query('INSERT INTO noticias set ?', sdt, function(error, result, fields){
-            console.log('Deu certo')
-            connection.release()
-
-            if(error) throw error;
-        })
-    })
-}
 
 function gravando(linhas){
     const dados = {
@@ -44,11 +21,21 @@ function gravando(linhas){
     }
     pool.getConnection(function(err, connection){
         if(err) throw err;
+        /*connection.query('INSERT INTO noticias set ?', dados, function(error, result, fields){
+            console.log('Deu certo')
+            connection.release()
+
+            if(error) throw error;
+        })*/
         connection.query('select * from `noticias` where `titulo` = ?',dados.titulo, function(error, result, fields){
             countresult = result.length
-            test = countresult==0
             if(countresult==0){
-                salvandodados(dados)
+                connection.query('INSERT INTO noticias set ?', dados, function(error, result, fields){
+                console.log('Deu certo')
+                connection.release()
+    
+                if(error) throw error
+            })
             }else{
                 console.log('TITULO CADASTRADO')
             }
